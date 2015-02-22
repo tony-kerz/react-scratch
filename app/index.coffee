@@ -1,3 +1,3 @@
 {render, createElement} = React
 
-render createElement(@app.CommentBox), $('#content')[0]
+render createElement(app.CommentBox), $('#content')[0]

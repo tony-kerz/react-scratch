@@ -1,6 +1,9 @@
-{div} = React.DOM
+{createClass, createElement, DOM} = React
+{div, h1} = DOM
 
-@app.CommentBox = React.createClass
+app.CommentBox = createClass
   render: ->
     div className: 'commentBox',
-      'Hello, world! I am a CommentBox.'
+      h1 {}, 'Comments'
+      createElement app.CommentList
+      createElement app.CommentForm
