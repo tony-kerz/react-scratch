@@ -1,5 +1,4 @@
-{createClass, createElement, DOM} = React
-{div, h1} = DOM
+reactSugar()
 
 app.CommentBox = createClass
   render: ->
