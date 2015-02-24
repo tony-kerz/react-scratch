@@ -1,5 +1,4 @@
-{createClass, DOM} = React
-{div} = DOM
+reactSugar()
 
 app.CommentForm = createClass
   render: ->

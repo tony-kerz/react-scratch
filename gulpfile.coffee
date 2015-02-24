@@ -43,6 +43,11 @@ gulp.task 'coffee', ->
   gulp.src ['app/**/*.coffee', '!app/**/*.spec.coffee']
   .pipe plug.coffee().on 'error', plug.util.log
   .pipe plug.if argv.optimize, optJsStream('app')()
+  .pipe plug.sweetjs(
+    modules: ['./sweet/react-sugar.sjs']
+    readableNames: true
+  )
+  .on 'error', plug.util.log
   .pipe gulp.dest buildApp
 
 #gulp.task 'sass', ->
