@@ -1,3 +1,4 @@
-reactSugar()
-
-render createElement(app.CommentBox), $('#content')[0]
+React.render(
+  React.createElement app.CommentBox
+    $('#content')[0]
+)

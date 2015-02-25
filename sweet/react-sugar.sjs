@@ -1,20 +1,14 @@
-macro genVar {
-  case {$name ($varName, $varVal:expr, $name2)} => {
-    letstx $ident = [makeIdent(unwrapSyntax(#{$varName}), #{$name2})];
-    return #{var $ident = $varVal}
+macro r {
+
+  case {_ ($name, $x:expr (,) ...)} => {
+    var _ = require('lodash');
+    var name = unwrapSyntax(#{$name});
+    isTag = _.includes(['div', 'h1', 'h2'], name);
+    letstx $nameStx = isTag ? [makeValue(name, null)] : #{$name};
+    return #{React.createElement($nameStx, $x (,) ...)}
   }
+
+  rule {($x:expr (,) ...)} => {React.createElement($x (,) ...)}
 }
 
-macro reactSugar {
-  case {$name ()} => {
-    return #{
-      genVar('createClass', React.createClass, $name);
-      genVar('createElement', React.createElement, $name);
-      genVar('render', React.render, $name);
-      genVar('div', React.DOM.div, $name);
-      genVar('h1', React.DOM.h1, $name)
-    }
-  }
-}
-
-export reactSugar;
+export r;
