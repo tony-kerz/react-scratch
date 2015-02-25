@@ -1,5 +1,8 @@
 macro r {
 
+  // r(div, {prop1: 'div-1'}, ...)
+  // r(foo, {prop1: 'foo-1'}, ...)
+  //
   case {_ ($name, $x:expr (,) ...)} => {
     var _ = require('lodash');
     var name = unwrapSyntax(#{$name});
@@ -8,6 +11,9 @@ macro r {
     return #{React.createElement($nameStx, $x (,) ...)}
   }
 
+  // r(foo.bar, {prop1: 'bar-1')
+  // r(foo)
+  //
   rule {($x:expr (,) ...)} => {React.createElement($x (,) ...)}
 }
 
