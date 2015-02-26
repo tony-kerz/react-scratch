@@ -1,10 +1,7 @@
 app.CommentList = React.createClass
   render: ->
+    commentNodes = @props.data.map (comment) ->
+      r app.Comment, author: comment.author, comment.text
     r div,
       className: 'commentList',
-      r app.Comment,
-        author: 'Pete Hunt',
-        'This is one comment'
-      r app.Comment,
-        author: 'Jordan Walke',
-        'This is *another* comment'
+      commentNodes

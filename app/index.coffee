@@ -1,4 +1,12 @@
+data = [
+  author: 'Pete Hunt',
+  text: 'This is one comment'
+,
+  author: 'Jordan Walke',
+  text: 'This is *another* comment'
+]
+
 React.render(
-  React.createElement app.CommentBox
-    $('#content')[0]
+  r app.CommentBox, data: data
+  $('#content')[0]
 )
