@@ -3,5 +3,5 @@ app.CommentBox = React.createClass
     r div,
       className: 'commentBox',
       r h1, {}, 'Comments'
-      r app.CommentList
+      r app.CommentList, data: @props.data
       r app.CommentForm
