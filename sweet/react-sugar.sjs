@@ -6,7 +6,7 @@ macro r {
   case {_ ($name, $x:expr (,) ...)} => {
     var _ = require('lodash');
     var name = unwrapSyntax(#{$name});
-    isTag = _.includes(['div', 'h1', 'h2'], name);
+    isTag = _.includes(['div', 'span', 'h1', 'h2'], name);
     letstx $nameStx = isTag ? [makeValue(name, null)] : #{$name};
     return #{React.createElement($nameStx, $x (,) ...)}
   }
