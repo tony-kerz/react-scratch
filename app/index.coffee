@@ -1,4 +1,4 @@
 React.render(
-  r app.CommentBox, url: 'comments-data.js', pollInterval: 30000
+  r app.CommentBox, url: 'comments.json', pollInterval: 60000
   $('#content')[0]
 )

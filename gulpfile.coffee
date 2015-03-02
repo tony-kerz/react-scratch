@@ -50,6 +50,10 @@ gulp.task 'coffee', ->
   .on 'error', plug.util.log
   .pipe gulp.dest buildApp
 
+gulp.task 'static', ->
+  gulp.src ['app/**/*.json']
+  .pipe gulp.dest buildApp
+
 #gulp.task 'sass', ->
 #  gulp.src 'app/app.scss'
 #  .pipe plug.sass(includePaths: ['bower_components'], sourceComments: 'normal')
@@ -100,7 +104,7 @@ gulp.task 'clean', (cb) ->
   del ['build'], cb
 
 gulp.task 'build', (cb) ->
-  run('clean', ['coffee', 'bower'], 'index', cb)
+  run('clean', ['coffee', 'bower', 'static'], 'index', cb)
 
 gulp.task 'default', (cb) ->
   run('build', 'watch', 'server', cb)
