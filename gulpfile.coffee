@@ -7,6 +7,9 @@ del = require 'del'
 lazy = require 'lazypipe'
 merge = require 'merge-stream'
 karma = require('karma').server
+fs = require('fs')
+bodyParser = require('body-parser')
+dbg = require('debug')('gulpfile')
 
 build = 'build'
 buildApp = "#{build}/app"
@@ -91,9 +94,31 @@ gulp.task 'watch', ->
 gulp.task 'server', ->
   gulp.src buildApp
   .pipe plug.webserver(
-    livereload: true
+    livereload: false
     directoryListing: false
     open: true
+    middleware: [
+      bodyParser.urlencoded extended: false
+
+      (req, res, next) ->
+        dbg 'url=%s, method=%s', req.url, req.method
+        if (req.url == '/comments.json') and (req.method == 'POST')
+          fileName = "#{buildApp}/comments.json"
+          fs.readFile fileName, (err, data) ->
+            if err
+              console.log 'read-file: err=%o', err
+            comments = JSON.parse data
+            dbg 'comments=%o, body=%o', comments, req.body
+            comments.push req.body
+            fs.writeFile fileName, JSON.stringify(comments, null, 4), (err) ->
+              if err
+                console.log 'write-file: err=%o', err
+              res.setHeader 'Content-Type', 'application/json'
+              res.setHeader 'Cache-Control', 'no-cache'
+              res.end JSON.stringify(comments)
+        else
+          next()
+    ]
 #    proxies: [
 #      source: '/api'
 #      target: 'http://localhost:3000/api'
