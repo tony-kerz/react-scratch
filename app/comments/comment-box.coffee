@@ -6,9 +6,22 @@ app.CommentBox = React.createClass
 
   loadCommentsFromServer: ->
     $.ajax
-      url: this.props.url
+      url: @props.url
       success: (data) =>
-        @setState data: eval(data)
+        @setState data: data
+      error: (xhr, status, err) =>
+        console.error @props.url, status, err.toString()
+
+  handleCommentSubmit: (comment) ->
+    dbg 'handle-comment-submit: comment=%o', comment
+    $.ajax
+      url: @props.url
+      dataType: 'json'
+      type: 'POST'
+      data: comment
+      success: (data) =>
+        dbg 'handle-comment-submit: data=%o', data
+        @setState data: data
       error: (xhr, status, err) =>
         console.error @props.url, status, err.toString()
 
@@ -22,4 +35,4 @@ app.CommentBox = React.createClass
       className: 'commentBox',
       r h1, {}, 'Comments'
       r app.CommentList, data: @state.data
-      r app.CommentForm
+      r app.CommentForm, onCommentSubmit: @handleCommentSubmit
