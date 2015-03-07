@@ -5,25 +5,20 @@ app.CommentBox = React.createClass
     data: []
 
   loadCommentsFromServer: ->
-    $.ajax
-      url: @props.url
-      success: (data) =>
-        @setState data: data
-      error: (xhr, status, err) =>
-        console.error @props.url, status, err.toString()
+    axios.get @props.url
+    .then (res) =>
+      @setState data: res.data
+    .catch (err) ->
+      console.error 'load-comments-from-server: err=%o', err
 
   handleCommentSubmit: (comment) ->
     dbg 'handle-comment-submit: comment=%o', comment
-    $.ajax
-      url: @props.url
-      dataType: 'json'
-      type: 'POST'
-      data: comment
-      success: (data) =>
-        dbg 'handle-comment-submit: data=%o', data
-        @setState data: data
-      error: (xhr, status, err) =>
-        console.error @props.url, status, err.toString()
+    axios.post @props.url, comment
+    .then (res) =>
+      dbg 'handle-comment-submit: res=%o', res
+      @setState data: res.data
+    .catch (err) ->
+      console.error 'handle-comment-submit: err=%o', err
 
   componentDidMount: ->
     @loadCommentsFromServer()
