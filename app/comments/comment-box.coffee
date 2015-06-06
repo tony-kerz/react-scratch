@@ -16,13 +16,14 @@ app.CommentBox = React.createClass
     axios.post @props.url, comment
     .then (res) =>
       dbg 'handle-comment-submit: res=%o', res
-      @setState data: res.data
+      #@setState data: res.data
+      @loadCommentsFromServer()
     .catch (err) ->
       console.error 'handle-comment-submit: err=%o', err
 
   componentDidMount: ->
     @loadCommentsFromServer()
-    setInterval @loadCommentsFromServer, @props.pollInterval
+    #setInterval @loadCommentsFromServer, @props.pollInterval
 
   render: ->
     dbg 'render: this=%o', @
