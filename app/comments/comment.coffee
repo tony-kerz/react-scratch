@@ -1,11 +1,13 @@
-converter = new Showdown.converter()
+dbg = require('debug')('app:comment')
+React = require 'react'
+Showdown = require 'showdown'
+converter = new Showdown.Converter()
+{div, h2, span} = React.DOM
 
-app.Comment = React.createClass
+module.exports = React.createClass
   render: ->
     rawMarkup = converter.makeHtml @props.children.toString()
-    r div, className: 'comment',
-      r h2, className: 'commentAuthor',
+    div className: 'comment',
+      h2 className: 'commentAuthor',
         @props.author
-        r span,
-        dangerouslySetInnerHTML:
-          __html: rawMarkup
+      span dangerouslySetInnerHTML: __html: rawMarkup

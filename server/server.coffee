@@ -6,7 +6,7 @@ require './init-db'
 
 app.use express.static('./build/app')
 app.use require('body-parser').json()
-app.use '/comments', require('./comments/routes')
+app.use '/api/comments', require('./comments/routes')
 
 server = app.listen 3000, ->
   dbg 'listening at: %o', server.address()

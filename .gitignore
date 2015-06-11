@@ -3,6 +3,5 @@
 build/
 bin/
 node_modules/
-bower_components/
 selenium/
 rethinkdb_data/
