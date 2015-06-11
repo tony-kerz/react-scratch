@@ -1,6 +1,12 @@
-dbg = debug 'app:comments:comment-box'
+dbg = require('debug')('app:comments:comment-box')
+React = require 'react'
+axios = require 'axios'
+CommentList = require './comment-list'
+CommentForm = require './comment-form'
+{createClass, createElement} = React
+{div, h1} = React.DOM
 
-app.CommentBox = React.createClass
+module.exports = createClass
   getInitialState: ->
     data: []
 
@@ -27,8 +33,7 @@ app.CommentBox = React.createClass
 
   render: ->
     dbg 'render: this=%o', @
-    r div,
-      className: 'commentBox',
-      r h1, {}, 'Comments'
-      r app.CommentList, data: @state.data
-      r app.CommentForm, onCommentSubmit: @handleCommentSubmit
+    div className: 'commentBox',
+      h1 {}, 'Comments'
+      createElement CommentList, data: @state.data
+      createElement CommentForm, onCommentSubmit: @handleCommentSubmit
