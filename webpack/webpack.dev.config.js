@@ -25,5 +25,4 @@ config = _.extend(
   }
 )
 
-console.log('config=%j', config)
 module.exports = config

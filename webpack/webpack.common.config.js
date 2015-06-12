@@ -2,7 +2,7 @@ module.exports = {
   entry: {
     app: [
       'webpack/hot/dev-server',
-      './app/app.coffee'
+      './app/app.jsx'
     ]
   },
   output: {
@@ -10,15 +10,19 @@ module.exports = {
     filename: 'bundle.js'
   },
   resolve: {
-    extensions: ['', '.js', '.coffee']
+    extensions: ['', '.js', '.jsx', '.coffee']
   },
   module: {
     loaders: [
       {
-        test: /\.scss$/, loader: 'style!css!sass'
+        test: /\.scss$/,
+        loader: 'style!css!sass'
       },
       {
-        test: /\.coffee$/, loader: 'coffee'
+        test: /\.jsx?$/,
+        loader: 'babel',
+        exclude: /node_modules/,
+        query: {stage: 0}
       }
     ]
   }
