@@ -1,4 +1,4 @@
-import {Component} from 'react'
+import React, {Component} from 'react'
 import Comment from './comment'
 import debug from 'debug'
 let dbg = debug('app:comments:comment-list')
