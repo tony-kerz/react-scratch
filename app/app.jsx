@@ -1,8 +1,12 @@
+import 'materialize-css/bin/materialize.css'
+import './app.scss'
+
 import React from 'react'
-import CommentBox from './comments/comment-box'
+import Main from './main'
+import 'materialize-css/bin/materialize'
 import $ from 'jquery'
 
 React.render(
-  <CommentBox url='/api/comments' pollInterval='60000'/>,
+  <Main/>,
   $('#content')[0]
 )
