@@ -19,7 +19,9 @@
     "marked": "^0.3.3",
     "material-ui": "^0.10.0",
     "materialize-css": "^0.96.1",
+    "radium": "^0.13.4",
     "react": "^0.13.3",
+    "react-router": "^0.13.3",
     "react-tap-event-plugin": "^0.1.7",
     "rethinkdbdash": "^2.0.11"
   },
