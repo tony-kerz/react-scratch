@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
 import MuiLeftNav from 'material-ui/lib/left-nav'
 import MenuItem from 'material-ui/lib/menu/menu-item'
-import Radium from 'radium'
-import NavHeader from './nav-header'
+import CardHeader from 'material-ui/lib/card/card-header'
+import ClickableAvatar from './clickable-avatar'
 
-@Radium
 class LeftNav extends Component {
 
   render() {
@@ -26,8 +25,16 @@ class LeftNav extends Component {
         docked={false}
         menuItems={menuItems}
         header={
-          <NavHeader
-            onClick={this._onNavHeaderClick}
+          <CardHeader
+            title="Title"
+            subtitle="Subtitle"
+            avatar={
+              <ClickableAvatar
+                onClick={this._onNavHeaderClick}
+              >
+                A
+              </ClickableAvatar>
+            }
           />
         }
         onChange={this._onLeftNavChange}
