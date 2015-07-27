@@ -1,7 +1,6 @@
-import 'materialize-css/bin/materialize.css'
+import 'semantic-ui-css/semantic.css'
 import './app.scss'
 import React from 'react'
-import 'materialize-css/bin/materialize'
 import $ from 'jquery'
 import TapEventPlugin from 'react-tap-event-plugin'
 import Router from 'react-router'

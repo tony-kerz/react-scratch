@@ -45,8 +45,16 @@ module.exports = {
         loader: "url-loader?limit=10000&mimetype=image/svg+xml"
       },
       {
-        test: require.resolve('materialize-css/bin/materialize'),
-        loader: "imports?jQuery=jquery,$=jquery"
+        test: /\.png$/,
+        loader: 'url-loader?mimetype=image/png'
+      },
+      {
+        test: /\.jpg$/,
+        loader: 'url-loader?mimetype=image/jpg'
+      },
+      {
+        test: require.resolve('semantic-ui-visibility/visibility'),
+        loader: 'imports?jQuery=jquery'
       }
     ]
   }
