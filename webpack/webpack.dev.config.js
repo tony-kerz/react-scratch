@@ -5,8 +5,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 config = _.extend(
   commonConfig,
   {
-    devtool: 'cheap-module-eval-source-map',
-    //devtool: 'source-map',
+    //devtool: 'cheap-module-eval-source-map',
+    devtool: 'source-map',
     debug: true,
     plugins: [
       new HtmlWebpackPlugin(
