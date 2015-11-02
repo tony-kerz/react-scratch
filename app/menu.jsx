@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import ReactDom from 'react-dom'
 import $ from 'jquery'
 import 'semantic-ui-visibility/visibility'
 import {Link} from 'react-router'
@@ -8,13 +9,13 @@ class Menu extends Component {
     return(
       <div className="ui masthead large secondary menu">
         <div className='ui container xyz'>
-          <Link to='home' className='item'>Home</Link>
-          <Link to='stuff' className='item'>Stuff</Link>
-          <Link to='other-stuff' className='item'>Other Stuff</Link>
-          <Link to='more-stuff' className='item'>More Stuff</Link>
+          <Link to='/home' className='item' activeClassName='active'>Home</Link>
+          <Link to='/stuff' className='item' activeClassName='active'>Stuff</Link>
+          <Link to='/other-stuff' className='item' activeClassName='active'>Other Stuff</Link>
+          <Link to='/more-stuff' className='item' activeClassName='active'>More Stuff</Link>
           <div className="right item">
-            <Link className="ui inverted button" to='sign-in'>Log in</Link>
-            <Link className="ui inverted button" to='sign-up'>Sign Up</Link>
+            <Link className="ui inverted button" to='/sign-in'>Log in</Link>
+            <Link className="ui inverted button" to='/sign-up'>Sign Up</Link>
           </div>
         </div>
       </div>
@@ -23,7 +24,7 @@ class Menu extends Component {
 
   componentDidMount() {
     console.log('menu: cdm')
-    $(React.findDOMNode(this)).visibility(
+    $(ReactDom.findDOMNode(this)).visibility(
       {
         type: 'fixed',
         fixedAddClasses: 'inverted',

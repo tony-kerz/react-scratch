@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, DefaultRoute} from 'react-router'
+import {Route, IndexRoute} from 'react-router'
 import Main from './main'
 import Home from './home'
 import Stuff from './stuff'
@@ -9,13 +9,14 @@ import SignUp from './sign-up'
 import SignIn from './sign-in'
 
 let AppRoutes = (
-  <Route handler={Main}>
-    <Route name="home" handler={Home} />
-    <DefaultRoute name='stuff' handler={Stuff}/>
-    <Route name="other-stuff" handler={OtherStuff} />
-    <Route name="more-stuff" handler={MoreStuff} />
-    <Route name="sign-in" handler={SignIn} />
-    <Route name="sign-up" handler={SignUp} />
+  <Route path='/' component={Main}>
+    <Route path='home' component={Home} />
+    <IndexRoute component={Stuff}/>
+    <Route path='stuff' component={Stuff} />
+    <Route path='other-stuff' component={OtherStuff} />
+    <Route path='more-stuff' component={MoreStuff} />
+    <Route path='sign-in' component={SignIn} />
+    <Route path='sign-up' component={SignUp} />
   </Route>
 )
 

@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {RouteHandler} from 'react-router'
 import Menu from './menu'
 
 class Main extends Component {
@@ -8,7 +7,7 @@ class Main extends Component {
       <div className='field'>
         <Menu/>
         <div className="ui main container">
-          <RouteHandler/>
+          {this.props.children}
         </div>
       </div>
     )
